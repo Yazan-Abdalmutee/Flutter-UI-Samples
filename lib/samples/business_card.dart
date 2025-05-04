@@ -18,7 +18,6 @@ class HomePage extends StatelessWidget {
       child: Container(
         width: 300,
         height: 480,
-
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
