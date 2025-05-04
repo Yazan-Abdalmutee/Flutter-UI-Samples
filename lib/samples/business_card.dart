@@ -17,11 +17,19 @@ class HomePage extends StatelessWidget {
     return Center(
       child: Container(
         width: 300,
-        height: 500,
+        height: 480,
 
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3),
+            ),
+          ],
           borderRadius: BorderRadius.circular(30),
-          color: Colors.red,
+          color: Colors.white,
         ),
         child: Stack(
           children: [
@@ -40,29 +48,43 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.fromLTRB(8, 60, 8, 8),
+                  padding: EdgeInsets.fromLTRB(10, 60, 8, 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Yazan Shrouf",style: TextStyle(fontSize: 16),),
+                      Text(
+                        "Yazan Shrouf",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Junior Flutter Developer",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(0xAD1B1A1A),
+                        ),
+                      ),
                       SizedBox(height: 20),
-                      Text("data"),
-                      SizedBox(height: 20),
-                      Text("data"),
+                      Text(
+                        "I am a Computer Engineering graduate from Birzeit University",
+                      ),
                       SizedBox(height: 20),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            Chip(label: Text("label")),
+                            Chip(label: Text("Flutter")),
                             SizedBox(width: 10),
-                            Chip(label: Text("label")),
+                            Chip(label: Text("Dart")),
                             SizedBox(width: 10),
-                            Chip(label: Text("label")),
+                            Chip(label: Text("My SQL")),
                             SizedBox(width: 10),
-                            Chip(label: Text("label")),
+                            Chip(label: Text("Java")),
                             SizedBox(width: 10),
-                            Chip(label: Text("label")),
+                            Chip(label: Text("Python")),
                           ],
                         ),
                       ),
@@ -71,9 +93,29 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextButton(onPressed: () {}, child: Text("Message")),
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                            ),
+                            child: Text(
+                              "Message",
+                              style: TextStyle(color: Colors.purple),
+                            ),
+                          ),
                           SizedBox(width: 10),
-                          TextButton(onPressed: () {}, child: Text("Folow")),
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              side: BorderSide(color: Colors.black),
+                              backgroundColor: Colors.white,
+                            ),
+                            child: Text(
+                              "Follow",
+
+                              style: TextStyle(color: Colors.purple),
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -90,9 +132,9 @@ class HomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      'assets/hotel_sample_assets/images/hotel_1.png',
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      'https://t3.ftcdn.net/jpg/03/35/34/80/360_F_335348056_yY8QyHP966KePjyutnns1Puwt2bnngZc.jpg',
                     ),
                   ),
                 ),
