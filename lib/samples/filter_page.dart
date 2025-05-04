@@ -33,7 +33,7 @@ class _FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor:   Colors.deepPurple,
+      backgroundColor: Colors.deepPurple,
       body: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: ColoredBox(
@@ -81,77 +81,12 @@ class _FilterPageState extends State<FilterPage> {
                   ),
                 ),
                 SizedBox(height: 30),
-                Text(
-                  "View",
-                  style: TextStyle(fontSize: 30, color: fontColor),
-                ),
-                Row(
-                  children: [
-                    Transform.scale(
-                      scale: 1.4,
-                      child: Radio<Choices>(
-                        value: Choices.choice1,
-                        groupValue: _choice,
-                        activeColor: buttonsColor,
-                        onChanged: (Choices? value) {
-                          setState(() {
-                            _choice = value;
-                          });
-                        },
-                      ),
-                    ),
-                    SizedBox(width: 15),
-                    Text(
-                      'All job posts',
-                      style: TextStyle(fontSize: 20, color: fontColor),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Transform.scale(
-                      scale: 1.4,
+                Text("View", style: TextStyle(fontSize: 30, color: fontColor)),
 
-                      child: Radio<Choices>(
-                        value: Choices.choice2,
-                        groupValue: _choice,
-                        activeColor: buttonsColor,
-                        onChanged: (Choices? value) {
-                          setState(() {
-                            _choice = value;
-                          });
-                        },
-                      ),
-                    ),
-                    SizedBox(width: 15),
-                    Text(
-                      'Active job posts',
-                      style: TextStyle(fontSize: 20, color: fontColor),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Transform.scale(
-                      scale: 1.4,
-                      child: Radio<Choices>(
-                        activeColor: buttonsColor,
-                        value: Choices.choice3,
-                        groupValue: _choice,
-                        onChanged: (Choices? value) {
-                          setState(() {
-                            _choice = value;
-                          });
-                        },
-                      ),
-                    ),
-                    SizedBox(width: 15),
-                    Text(
-                      'Archive job Posts',
-                      style: TextStyle(fontSize: 20, color: fontColor),
-                    ),
-                  ],
-                ),
+                createRadioButton("All job posts", Choices.choice1),
+                createRadioButton("Active job posts", Choices.choice2),
+                createRadioButton("Archive job posts", Choices.choice3),
+
                 SizedBox(height: 20),
                 Text(
                   "Include",
@@ -179,7 +114,7 @@ class _FilterPageState extends State<FilterPage> {
                         },
                       ),
                     ),
-                    SizedBox(width: 15),
+                    SizedBox(width: 5),
                     Text(
                       'Jobs shared with me',
                       style: TextStyle(fontSize: 20, color: fontColor),
@@ -190,7 +125,6 @@ class _FilterPageState extends State<FilterPage> {
                 SizedBox(
                   height: 60,
                   width: double.infinity,
-
                   child: ElevatedButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
@@ -213,4 +147,25 @@ class _FilterPageState extends State<FilterPage> {
     );
   }
 
+  Widget createRadioButton(String text, Choices choice) {
+    return Row(
+      children: [
+        Transform.scale(
+          scale: 1.4,
+          child: Radio<Choices>(
+            value: choice,
+            groupValue: _choice,
+            activeColor: buttonsColor,
+            onChanged: (Choices? value) {
+              setState(() {
+                _choice = value;
+              });
+            },
+          ),
+        ),
+        SizedBox(width: 5),
+        Text(text, style: TextStyle(fontSize: 20, color: fontColor)),
+      ],
+    );
+  }
 }
